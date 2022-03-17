@@ -9,9 +9,43 @@ import SwiftUI
 import MapKit
 
 struct ContentView: View {
+    @State var searchText = ""
     var body: some View {
         MapView()
             .ignoresSafeArea()
+            .overlay(
+                SearchBar()
+                ,alignment: .top
+            )
+    }
+    
+    @ViewBuilder
+    func SearchBar() -> some View {
+        HStack(spacing: 12) {
+            ZStack {
+                if searchText.isEmpty {
+                    Text("Search")
+                        .frame(maxWidth: .infinity, alignment: .leading)
+                        .foregroundColor(Color.black.opacity(0.4))
+                }
+                TextField("", text: $searchText)
+            }
+            .font(.system(size: 14))
+            Button {
+                
+            } label: {
+                Image(systemName: "magnifyingglass")
+                    .foregroundColor(Color.black)
+            }
+            .buttonStyle(DefaultButtonStyle())
+        }
+            .padding(.horizontal)
+            .padding(.vertical, 16)
+            .background(Color.white)
+            .cornerRadius(8)
+            .shadow(color: Color.black.opacity(0.2), radius: 18, x: 4, y: -4)
+            .padding(.horizontal)
+            .padding(.top)
     }
 }
 
@@ -25,12 +59,15 @@ struct MapView: UIViewRepresentable {
         map.showsUserLocation = true
         context.coordinator.addTileOverlay(mapView: map)
         
+        var places: [CLLocationCoordinate2D] = []
         for i in 0..<3 {
             let annotation = MKPointAnnotation()
-            annotation.coordinate = .init(latitude: CGFloat(54.1812 + CGFloat(0.01 * CGFloat(i))), longitude: CGFloat(45.17 + CGFloat(0.01 * CGFloat(i))))
+            annotation.coordinate = .init(latitude: i == 0 ? 54.163 : CGFloat(54.1812 + CGFloat(0.01 * CGFloat(i))), longitude: i == 0 ? 45.167 : CGFloat(45.17 + CGFloat(0.02 * CGFloat(i))))
             map.addAnnotation(annotation)
+            places.append(.init(latitude: i == 0 ? 54.163 : CGFloat(54.1812 + CGFloat(0.01 * CGFloat(i))), longitude: i == 0 ? 45.167 : CGFloat(45.17 + CGFloat(0.02 * CGFloat(i)))))
         }
-        
+        let polygon = MKPolygon(coordinates: &places, count: places.count)
+        map.addOverlay(polygon)
         return map
     }
     
@@ -53,6 +90,12 @@ struct MapView: UIViewRepresentable {
                 overlay.strokeColor = UIColor.green
                 overlay.lineWidth = 4
                 return overlay
+            } else if overlay is MKPolygon {
+                let renderer = MKPolygonRenderer(polygon: overlay as! MKPolygon)
+                renderer.fillColor = UIColor.black.withAlphaComponent(0.5)
+                renderer.strokeColor = UIColor.black
+                renderer.lineWidth = 2
+                return renderer
             }
             return tileRenderer!
         }
@@ -63,6 +106,14 @@ struct MapView: UIViewRepresentable {
                     return
                 }
                 createRoute(mapView, destination: destination)
+            }
+        }
+        
+        func mapView(_ mapView: MKMapView, didDeselect view: MKAnnotationView) {
+            for overlay in mapView.overlays {
+                if overlay is MKTileOverlay == false {
+                    mapView.removeOverlay(overlay)
+                }
             }
         }
         

@@ -8,7 +8,32 @@
 import SwiftUI
 import MapKit
 
+struct SampleModel: Hashable, Decodable {
+    let userId: Int
+    let id: Int
+    let title: String
+    let body: String
+}
+
+class ViewModel: ObservableObject {
+    @Published var posts: [SampleModel] = []
+    
+    init() {
+        fetchPosts()
+    }
+    
+    func fetchPosts() {
+        NetworkManager.shared.baseRequest(url: "https://jsonplaceholder.typicode.com/posts", method: .get, model: posts) { posts in
+            DispatchQueue.main.async {
+                self.posts = posts
+                print(self.posts)
+            }
+        }
+    }
+}
+
 struct ContentView: View {
+    @StateObject var vm = ViewModel()
     @State var searchText = ""
     var body: some View {
         MapView()

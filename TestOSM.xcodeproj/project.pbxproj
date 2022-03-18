@@ -12,6 +12,7 @@
 		375F77E927E32467007423EB /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 375F77E827E32467007423EB /* Assets.xcassets */; };
 		375F77EC27E32467007423EB /* Preview Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 375F77EB27E32467007423EB /* Preview Assets.xcassets */; };
 		375F77F327E329AA007423EB /* LocationManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = 375F77F227E329AA007423EB /* LocationManager.swift */; };
+		3FA320A027E498B100AEFAF5 /* NetworkManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3FA3209F27E498B100AEFAF5 /* NetworkManager.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -21,6 +22,8 @@
 		375F77E827E32467007423EB /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
 		375F77EB27E32467007423EB /* Preview Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = "Preview Assets.xcassets"; sourceTree = "<group>"; };
 		375F77F227E329AA007423EB /* LocationManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LocationManager.swift; sourceTree = "<group>"; };
+		3FA3209F27E498B100AEFAF5 /* NetworkManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NetworkManager.swift; sourceTree = "<group>"; };
+		3FA320A127E49C2800AEFAF5 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist; path = Info.plist; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -53,11 +56,13 @@
 		375F77E327E32463007423EB /* TestOSM */ = {
 			isa = PBXGroup;
 			children = (
+				3FA320A127E49C2800AEFAF5 /* Info.plist */,
 				375F77E427E32463007423EB /* TestOSMApp.swift */,
 				375F77E627E32463007423EB /* ContentView.swift */,
 				375F77E827E32467007423EB /* Assets.xcassets */,
 				375F77EA27E32467007423EB /* Preview Content */,
 				375F77F227E329AA007423EB /* LocationManager.swift */,
+				3FA3209F27E498B100AEFAF5 /* NetworkManager.swift */,
 			);
 			path = TestOSM;
 			sourceTree = "<group>";
@@ -140,6 +145,7 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				3FA320A027E498B100AEFAF5 /* NetworkManager.swift in Sources */,
 				375F77E727E32463007423EB /* ContentView.swift in Sources */,
 				375F77E527E32463007423EB /* TestOSMApp.swift in Sources */,
 				375F77F327E329AA007423EB /* LocationManager.swift in Sources */,
@@ -273,9 +279,10 @@
 				CODE_SIGN_STYLE = Automatic;
 				CURRENT_PROJECT_VERSION = 1;
 				DEVELOPMENT_ASSET_PATHS = "\"TestOSM/Preview Content\"";
-				DEVELOPMENT_TEAM = 5RVS7LV4U3;
+				DEVELOPMENT_TEAM = QB4Y5X9KKB;
 				ENABLE_PREVIEWS = YES;
 				GENERATE_INFOPLIST_FILE = YES;
+				INFOPLIST_FILE = TestOSM/Info.plist;
 				INFOPLIST_KEY_NSLocationWhenInUseUsageDescription = "";
 				INFOPLIST_KEY_UIApplicationSceneManifest_Generation = YES;
 				INFOPLIST_KEY_UIApplicationSupportsIndirectInputEvents = YES;
@@ -287,7 +294,7 @@
 					"@executable_path/Frameworks",
 				);
 				MARKETING_VERSION = 1.0;
-				PRODUCT_BUNDLE_IDENTIFIER = danyaq.TestOSM;
+				PRODUCT_BUNDLE_IDENTIFIER = vlaady.TestOSM;
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				SWIFT_EMIT_LOC_STRINGS = YES;
 				SWIFT_VERSION = 5.0;
@@ -303,9 +310,10 @@
 				CODE_SIGN_STYLE = Automatic;
 				CURRENT_PROJECT_VERSION = 1;
 				DEVELOPMENT_ASSET_PATHS = "\"TestOSM/Preview Content\"";
-				DEVELOPMENT_TEAM = 5RVS7LV4U3;
+				DEVELOPMENT_TEAM = QB4Y5X9KKB;
 				ENABLE_PREVIEWS = YES;
 				GENERATE_INFOPLIST_FILE = YES;
+				INFOPLIST_FILE = TestOSM/Info.plist;
 				INFOPLIST_KEY_NSLocationWhenInUseUsageDescription = "";
 				INFOPLIST_KEY_UIApplicationSceneManifest_Generation = YES;
 				INFOPLIST_KEY_UIApplicationSupportsIndirectInputEvents = YES;
@@ -317,7 +325,7 @@
 					"@executable_path/Frameworks",
 				);
 				MARKETING_VERSION = 1.0;
-				PRODUCT_BUNDLE_IDENTIFIER = danyaq.TestOSM;
+				PRODUCT_BUNDLE_IDENTIFIER = vlaady.TestOSM;
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				SWIFT_EMIT_LOC_STRINGS = YES;
 				SWIFT_VERSION = 5.0;
@@ -335,7 +343,7 @@
 				375F77EE27E32467007423EB /* Release */,
 			);
 			defaultConfigurationIsVisible = 0;
-			defaultConfigurationName = Release;
+			defaultConfigurationName = Debug;
 		};
 		375F77EF27E32467007423EB /* Build configuration list for PBXNativeTarget "TestOSM" */ = {
 			isa = XCConfigurationList;
@@ -344,7 +352,7 @@
 				375F77F127E32467007423EB /* Release */,
 			);
 			defaultConfigurationIsVisible = 0;
-			defaultConfigurationName = Release;
+			defaultConfigurationName = Debug;
 		};
 /* End XCConfigurationList section */
 	};
